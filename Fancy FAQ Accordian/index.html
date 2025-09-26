@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy FAQ Accordion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 50px;
+            background-color: #f9f9f9;
+        }
+        .accordion-button::after {
+            display: none; /* Remove default Bootstrap arrow */
+        }
+        .faq-icon {
+            margin-right: 10px;
+            font-weight: bold;
+            transition: transform 0.3s ease-in-out; /* Smooth rotation transition for the icon */
+        }
+        .accordion-button:not(.collapsed) .faq-icon {
+            transform: rotate(45deg); /* Rotates the '+' icon to create an 'X' or diamond shape */
+        }
+        #searchInput {
+            margin-bottom: 20px;
+        }
+        /* Hide the content by default to enable jQuery slide animation */
+        .accordion-body {
+            display: none;
+        }
+        .accordion-button {
+            transition: background-color 0.3s ease; /* Smooth hover effect for buttons */
+        }
+        .accordion-button:hover {
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4 text-center">Frequently Asked Questions</h2>
+        
+        <input type="text" id="searchInput" class="form-control" placeholder="Search FAQs...">
+
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> What is your return policy?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Our return policy lasts 30 days. If 30 days have gone by since your purchase, unfortunately, we cannot offer you a refund or exchange.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> How long does shipping take?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Shipping usually takes 5-7 business days for standard delivery and 2-3 days for express delivery.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Do you offer international shipping?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, we ship to most countries worldwide. International shipping charges and delivery times vary depending on location.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> How can I track my order?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Once your order has shipped, you will receive a tracking number via email. You can use this number on our website's "Track Order" page or the carrier's site.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> What payment methods do you accept?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        We accept all major credit cards (Visa, Mastercard, American Express), as well as PayPal, Apple Pay, and Google Pay.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Can I cancel or change my order?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Orders can be canceled or changed within 24 hours of being placed. Please contact our support team immediately for assistance.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Are your products eco-friendly?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        We are committed to sustainability. Many of our products are made from recycled or sustainably sourced materials, and we use eco-friendly packaging.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Do you have a physical store?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        No, we currently operate exclusively online, which allows us to offer a wider selection and better prices.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> How do I apply a discount code?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        You can enter your discount code in the "Promo Code" or "Discount Code" box during the checkout process.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Is my personal information secure?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, we use industry-standard encryption and security protocols to protect your personal and payment information.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> What if my item arrives damaged?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Please contact us within 48 hours of delivery with photos of the damaged item and packaging. We will arrange for a replacement or refund.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Do you offer gift wrapping?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, we offer gift wrapping for a small additional fee. You can select this option at checkout.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> How do I sign up for your newsletter?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        You can sign up for our newsletter by entering your email address in the footer of our website.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> What is your privacy policy?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Our full privacy policy can be found on our website. We are committed to protecting your personal data and privacy.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Can I exchange an item?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, you can exchange an item within our 30-day return window. Please contact our support team to initiate an exchange.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> How do I contact customer support?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        You can reach our customer support team via the contact form on our website, by email at support@yourcompany.com, or by phone during business hours.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Do you offer discounts for bulk orders?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, we offer special pricing for bulk orders. Please contact our sales team for a custom quote.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> What is your warranty policy?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Most of our products come with a one-year limited warranty against manufacturing defects. Details can be found on the product page.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> How do I reset my password?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        On the login page, click the "Forgot Password?" link. We will send a password reset link to your registered email address.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> What happens if I'm not home for delivery?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        The carrier will typically make a second attempt or leave a notice with instructions on how to reschedule delivery or pick up your package from a local depot.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Are your products suitable for allergies?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        We list all ingredients and materials on our product pages. Please check the product details carefully if you have allergies.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Can I leave a product review?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, we encourage you to leave reviews! You can do so on the product page after your purchase.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Do you offer gift cards?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, digital gift cards are available for purchase on our website.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> How do I unsubscribe from your newsletter?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        You can unsubscribe at any time by clicking the "Unsubscribe" link at the bottom of any of our newsletter emails.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> What is your policy on backordered items?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        If an item is on backorder, we will notify you and provide an estimated ship date. You have the option to wait or cancel your order for a full refund.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Are your prices in US dollars?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        All prices are listed in US dollars (USD). For international customers, your bank will convert the amount to your local currency.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Can I use multiple discount codes?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        No, only one discount code can be used per order.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Do you have a loyalty program?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, we have a loyalty program where you can earn points on every purchase to redeem for discounts on future orders.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> How do I make a complaint?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        We take all feedback seriously. Please contact our customer support team with details of your complaint, and we will do our best to resolve it.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Can I pre-order a product?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, some of our upcoming products are available for pre-order. You will be notified once the item is ready to ship.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> What are your business hours?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Our customer support team is available Monday to Friday, from 9 AM to 5 PM EST.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> How do I update my shipping address?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        You can update your shipping address in your account settings. If your order has already been placed, contact us as soon as possible.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> What is your return policy on sale items?
+                  z  </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        All sale items are final sale and are not eligible for returns or exchanges unless they are defective.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button">
+                        <span class="faq-icon">+</span> Do you offer expedited shipping?
+                    </button>
+                </h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        Yes, we offer expedited shipping for an additional fee. You can select this option at checkout.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Intercept and replace Bootstrap's collapse behavior
+            $('#faqAccordion .accordion-button').on('click', function(e){
+                e.preventDefault(); // Prevent default Bootstrap behavior
+                var target = $(this).closest('.accordion-item').find('.accordion-body');
+                
+                // Close all other open accordion items and reset their icons
+                $('#faqAccordion .accordion-body').not(target).slideUp(400); // 400ms duration for smoother slide-up
+                $('#faqAccordion .accordion-button').removeClass('active').find('.faq-icon').text('+');
+                
+                // Toggle the clicked item's content with slide animation
+                target.slideToggle(400); // 400ms duration for smoother slide-toggle
+                
+                // Toggle the active class and icon for the clicked button
+                $(this).toggleClass('active');
+                if ($(this).hasClass('active')) {
+                    $(this).find('.faq-icon').text('-');
+                } else {
+                    $(this).find('.faq-icon').text('+');
+                }
+            });
+
+            // Search functionality
+            $('#searchInput').on('keyup', function(){
+                var value = $(this).val().toLowerCase();
+                $('#faqAccordion .accordion-item').filter(function(){
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
